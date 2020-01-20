@@ -1,7 +1,7 @@
 #ifndef YET_ANOTHER_TEMPLATE_PROJECT_VERSION_HPP 
 #define YET_ANOTHER_TEMPLATE_PROJECT_VERSION_HPP
 
-namespace yet_another_template_project {
+namespace zeromq_test {
 
   constexpr char major_version_number[] = "@MAJOR_VERSION_NUMBER@";
 

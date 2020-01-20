@@ -1,15 +1,20 @@
 #include <iostream>
 #include <cstdlib>
 
+#include <zmq.hpp>
+
 #include "version.hpp"
 
-using namespace yet_another_template_project;
+
+using namespace zeromq_test;
 
 int main()
 {
-  std::cout << "v" << major_version_number
-    << "." << minor_version_number
-    << "." << patch_version_number
+  const auto [major, minor, patch] = zmq::version();
+ 
+  std::cout << "ZeroMQ v" << major
+    << "." << minor
+    << "." << patch
     <<"\n";
 
   return EXIT_SUCCESS;

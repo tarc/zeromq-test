@@ -1,4 +1,4 @@
-set( ProjectName yet-another-template-project )
+set( ProjectName zeromq-test )
 
 project( ${ProjectName} )
 cmake_minimum_required( VERSION 3.10 )
@@ -15,9 +15,9 @@ conan_basic_setup( TARGETS )
 
 find_package( Git )
 
-set ( MAJOR "0" )
-set ( MINOR "0" )
-set ( PATCH "0" )
+set ( MAJOR_VERSION_NUMBER "0" )
+set ( MINOR_VERSION_NUMBER "0" )
+set ( PATCH_VERSION_NUMBER "0" )
 
 if ( Git_FOUND )
 
@@ -33,8 +33,6 @@ if ( Git_FOUND )
     set ( MINOR_VERSION_NUMBER ${CMAKE_MATCH_2} )
     set ( PATCH_VERSION_NUMBER ${CMAKE_MATCH_3} )
 
-    configure_file ( version.hpp.in version.hpp )
-
   else ( )
 
     message( "Could not extract version from: ${GIT_REPO_VERSION}" )
@@ -42,6 +40,8 @@ if ( Git_FOUND )
   endif ( )
 
 endif ( )
+
+configure_file ( version.hpp.in version.hpp )
 
 
 # Setting targets:
@@ -53,8 +53,8 @@ target_include_directories( ${ProjectName}
   PRIVATE ${CMAKE_SOURCE_DIR}/include
   PRIVATE ${CMAKE_CURRENT_BINARY_DIR} )
 
-# target_link_libraries( ${ProjectName}
-#  PRIVATE CONAN_PKG::some-package )
+target_link_libraries( ${ProjectName}
+  PRIVATE CONAN_PKG::cppzmq )
 
 
 # Setting tests

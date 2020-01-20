@@ -16,6 +16,4 @@ if [ ! -d $build_dir ]; then
   ./$script_dir/gen.sh $build_type
 fi
 
-cd $build_dir
-
-cmake --build . --config $build_type -- -j3 || exit 1
+cmake --build $build_dir --config $build_type -- -j3 || exit 1
